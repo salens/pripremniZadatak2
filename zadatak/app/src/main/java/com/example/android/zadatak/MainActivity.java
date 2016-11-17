@@ -23,13 +23,22 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapters.DrawerListAdapter;
+import db.DatabaseHelper;
+import db.model.Category;
+import db.model.Product;
+import dialogs.AboutDialog;
+import fragments.DetailFragment;
+import fragments.ListFragment;
 import model.NavigationItem;
 
-public class MainActivity extends AppCompatActivity implements OnProductSelectedListener {
+public class MainActivity extends AppCompatActivity implements ListFragment.OnProductSelectedListener {
 
     /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
