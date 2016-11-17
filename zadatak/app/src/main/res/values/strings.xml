@@ -21,11 +21,8 @@
     <string name="dialog_about_no">Cancel</string>
 
     <string name="pref_sync">pref_sync</string>
-    <string name="show_Notification">show_Notification</string>
     <string name="pref_sync_title">Allow Sync</string>
-    <string name="pref_sync_titleNotification">Allow Notifications</string>
     <string name="pref_sync_summ">Allow app to sync data automatically if Wi-fi is available</string>
-    <string name="pref_sync_not">Allow app to show notifications</string>
     <string name="pref_syncConnectionType">Sync interval</string>
     <string name="pref_sync_list">pref_sync_list</string>
 
@@ -37,12 +34,5 @@
     <string name="drawer_Settings_long">Change App Settings</string>
     <string name="drawer_about">About</string>
     <string name="drawer_about_long">About Us</string>
-
-    <string name="autosync_problem">Automatic Sync problem</string>
-    <string name="no_internet">Bad news, no internet connection</string>
-    <string name="autosync_warning">Automatic Sync warning</string>
-    <string name="connect_to_wifi">Please connect to wifi to sync data</string>
-    <string name="autosync">Automatic Sync</string>
-    <string name="good_news_sync">Good news, everything is sync now.</string>
 
 </resources>

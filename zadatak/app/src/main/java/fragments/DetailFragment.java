@@ -22,19 +22,17 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.android.zadatak.MainActivity;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 
-import db.model.Product;
+
+import db.model.Glumac;
 
 
 public class DetailFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private static int NOTIFICATION_ID = 1;
 
-    private Product product = null;
+    private Glumac product = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,12 +51,12 @@ public class DetailFragment extends Fragment implements AdapterView.OnItemSelect
         super.onActivityCreated(savedInstanceState);
 
         if (savedInstanceState != null) {
-            product = new Product();
+            product = new Glumac();
             product.setmId(savedInstanceState.getInt("id"));
             product.setmName(savedInstanceState.getString("name"));
-            product.setDescription(savedInstanceState.getString("description"));
-            product.setRating(savedInstanceState.getFloat("rating"));
-            product.setImage(savedInstanceState.getString("image"));
+            product.setmLastName(savedInstanceState.getString("description"));
+            product.setMocena(savedInstanceState.getInt("rating"));
+            //product.setmDatum(savedInstanceState.getInt(new DateFormat()));
         }
     }
 
@@ -69,9 +67,9 @@ public class DetailFragment extends Fragment implements AdapterView.OnItemSelect
         if (savedInstanceState != null) {
             savedInstanceState.putInt("id", product.getmId());
             savedInstanceState.putString("name", product.getmName());
-            savedInstanceState.putString("description", product.getDescription());
-            savedInstanceState.putFloat("rating", product.getRating());
-            savedInstanceState.putString("image", product.getImage());
+            savedInstanceState.putString("description", product.getmLastName());
+            savedInstanceState.putFloat("rating", product.getMocena());
+
         }
     }
 
@@ -87,23 +85,23 @@ public class DetailFragment extends Fragment implements AdapterView.OnItemSelect
         name.setText(product.getmName());
 
         TextView description = (TextView) view.findViewById(R.id.description);
-        description.setText(product.getDescription());
+        description.setText(product.getmLastName());
 
         TextView category = (TextView) view.findViewById(R.id.category);
-        category.setText(product.getCategory().getName());
+        category.setText(product.getmFilms().toString());
 
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.rating);
-        ratingBar.setRating(product.getRating());
+        ratingBar.setRating(product.getMocena());
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        InputStream is = null;
-        try {
-            is = getActivity().getAssets().open(product.getImage());
-            Drawable drawable = Drawable.createFromStream(is, null);
-            imageView.setImageDrawable(drawable);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        ImageView imageView = (ImageView) view.findViewById(R.id.image);
+//        InputStream is = null;
+//        try {
+//            is = getActivity().getAssets().open(product.getImage());
+//            Drawable drawable = Drawable.createFromStream(is, null);
+//            imageView.setImageDrawable(drawable);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         FloatingActionButton button = (FloatingActionButton) view.findViewById(R.id.buy);
         button.setOnClickListener(new View.OnClickListener() {
@@ -126,31 +124,31 @@ public class DetailFragment extends Fragment implements AdapterView.OnItemSelect
         return view;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Glumac product) {
         this.product = product;
     }
 
-    public void updateProduct(Product product) {
+    public void updateProduct(Glumac product) {
         this.product = product;
 
         TextView name = (TextView) getActivity().findViewById(R.id.name);
         name.setText(product.getmName());
 
         TextView description = (TextView) getActivity().findViewById(R.id.description);
-        description.setText(product.getDescription());
+        description.setText(product.getmLastName());
 
         RatingBar ratingBar = (RatingBar) getActivity().findViewById(R.id.rating);
-        ratingBar.setRating(product.getRating());
+        ratingBar.setRating(product.getMocena());
 
-        ImageView imageView = (ImageView) getActivity().findViewById(R.id.image);
-        InputStream is = null;
-        try {
-            is = getActivity().getAssets().open(product.getImage());
-            Drawable drawable = Drawable.createFromStream(is, null);
-            imageView.setImageDrawable(drawable);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        ImageView imageView = (ImageView) getActivity().findViewById(R.id.image);
+//        InputStream is = null;
+//        try {
+//            is = getActivity().getAssets().open(product.getImage());
+//            Drawable drawable = Drawable.createFromStream(is, null);
+//            imageView.setImageDrawable(drawable);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

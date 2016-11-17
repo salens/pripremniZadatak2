@@ -12,13 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.android.zadatak.R;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import db.DatabaseHelper;
-import db.model.Product;
+import db.model.Glumac;
 
 public class ListFragment extends Fragment {
 
@@ -42,9 +43,9 @@ public class ListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         try {
-            List<Product> list = getDatabaseHelper().getProductDao().queryForAll();
+            List<Glumac> list = getDatabaseHelper().getProductDao().queryForAll();
 
-            adapter = new ArrayAdapter<Product>(getActivity(), R.layout.list_item, list);
+            adapter = new ArrayAdapter<Glumac>(getActivity(), R.layout.list_item, list);
 
             final ListView listView = (ListView)getActivity().findViewById(R.id.products);
 
@@ -56,7 +57,7 @@ public class ListFragment extends Fragment {
                     // Posto radimo sa bazom podataka, svaki element ima jedinstven id
                     // pa je potrebno da vidimo na koji tacno element smo kliknuli.
                     // To mozemo uraditi tako sto izvucemo proizvod iz liste i dobijemo njegov id
-                    Product p = (Product) listView.getItemAtPosition(position);
+                    Glumac p = (Glumac) listView.getItemAtPosition(position);
 
                     listener.onProductSelected(p.getmId());
                 }
